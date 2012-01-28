@@ -5,10 +5,6 @@ from models import JenkinsCI
 app = Flask(__name__)
 app.config.from_object('settings')
 
-import json
-
-from models import JenkinsCI
-
 @app.route('/')
 def index():
     view = request.args.get('view', '')
