@@ -35,12 +35,13 @@ class JenkinsCI(object):
             List all jobs of a view for the jenkins server
         """
 
-        datas = self.urlopen('%s%s/api/json?tree=jobs[name,color]' % (self.url, \
-                            self.view))
+        datas = self.urlopen('%s%s/api/json?tree=jobs[name,color]' % \
+                (self.url, self.view))
 
         if not datas:
-            raise 'Error getting build data from Jenkins server at %s' \
-                    % self.url
+            raise ValueError(
+                'Error getting build data from Jenkins server at %s' % \
+                    self.url)
 
         ret = []
 
@@ -79,8 +80,9 @@ class JenkinsCI(object):
             If you have to blame someone for bad work :)
         """
 
-        datas = self.urlopen("%s/job/%s/lastBuild/api/json?tree=culprits[fullName]" \
-                                % (self.url, jobname))
+        datas = self.urlopen(
+            "%s/job/%s/lastBuild/api/json?tree=culprits[fullName]" \
+                % (self.url, jobname))
 
         culprits = json.loads(datas.read())
 
