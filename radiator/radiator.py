@@ -5,10 +5,12 @@ from models import JenkinsCI
 app = Flask(__name__)
 app.config.from_object('settings')
 
+
 @app.route('/')
 def index():
     view = request.args.get('view', '')
     return render_template('index.html', view=view)
+
 
 @app.route('/builds')
 def builds():

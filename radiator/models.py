@@ -2,6 +2,7 @@ import socket
 import urllib2
 import json
 
+
 class JenkinsCI(object):
     """
         The real class for get information in jenkins server
@@ -63,13 +64,13 @@ class JenkinsCI(object):
         """
 
         colors = {'blue': ['successful'], \
-                'blue_anime': ['successful','building'], \
+                'blue_anime': ['successful', 'building'], \
                 'red': ['failed'], \
-                'red_anime': ['failed','building'], \
+                'red_anime': ['failed', 'building'], \
                 'yellow': ['unstable'], \
                 'yellow_anime': ['unstable', 'building'], \
                 'aborted': ['cancelled'], \
-                'aborted_anime': ['cancelled','building'], \
+                'aborted_anime': ['cancelled', 'building'], \
                 'disabled': ['disabled'], \
                 'default': ['unknown']}
 
