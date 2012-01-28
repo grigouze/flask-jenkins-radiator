@@ -58,11 +58,10 @@ ul {
 
 .successful {
     border: solid 1px #0076a3;
-    /* background: #0095cd; green is better than blue */ 
     background: #00FF00;
-    background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
-    background: -moz-linear-gradient(top,  #00adee,  #0078a5);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
+    background: -webkit-gradient(linear, left top, left bottom, from(#00ff00), to(#11aa55));
+    background: -moz-linear-gradient(top,  #00ff00,  #11aa55);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ff00', endColorstr='#11aa55');
 }
 
 .failed {
