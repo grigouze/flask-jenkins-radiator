@@ -1,6 +1,7 @@
 import socket
 import urllib2
 import json
+import base64
 
 
 class JenkinsCI(object):
@@ -8,7 +9,7 @@ class JenkinsCI(object):
         The real class for get information in jenkins server
     """
 
-    def __init__(self, url=None, view=None, timeout=0):
+    def __init__(self, url=None, username=None, password=None, view=None, timeout=0):
         if url is None:
             url = 'http://' + socket.gethostname()
         if view is None:
@@ -17,6 +18,8 @@ class JenkinsCI(object):
             view = '/view/%s' % view
 
         self.url = url
+        self.username = username
+        self.password = password
         self.view = view
         self.timeout = timeout
 
@@ -28,8 +31,13 @@ class JenkinsCI(object):
         """
 
         timeout = self.timeout
+        request = urllib2.Request(url)
+        
+        if self.username:
+        	base64string = base64.encodestring('%s:%s' % (self.username, self.password)).replace('\n', '')
+        	request.add_header("Authorization", "Basic %s" % base64string)   
 
-        return urllib2.urlopen(url, timeout=timeout)
+        return urllib2.urlopen(request, timeout=timeout)
 
     def get_all_jobs(self):
         """
