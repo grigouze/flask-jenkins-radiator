@@ -19,10 +19,12 @@ def builds():
     """
 
     url = app.config['JENKINS_URL']
+    username = app.config.get('JENKINS_USERNAME')
+    password = app.config.get('JENKINS_PASSWORD')
     view = request.args.get('view') or app.config['JENKINS_DEFAULT_URL']
     timeout = app.config['JENKINS_TIMEOUT']
 
-    jenkins = JenkinsCI(url=url, view=view, timeout=timeout)
+    jenkins = JenkinsCI(url=url, username=username, password=password, view=view, timeout=timeout)
 
     jobs = None
     result = None
@@ -47,4 +49,7 @@ def builds():
     return json.dumps(result)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(
+    		debug=True,
+    		host=app.config.get('HOST'),
+    	)
