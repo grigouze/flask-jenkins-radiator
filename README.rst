@@ -20,3 +20,8 @@ What To Do
 ----------
 1. Update settings.py to point to your Jenkins CI server and the view of your jobs
 2. It's fini.
+
+Thanks
+------
+dusano (https://github.com/dusano)
+xdaseinx (https://github.com/xdaseinx)
